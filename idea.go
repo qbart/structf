@@ -1,3 +1,13 @@
+package main
+
+import (
+	"encoding"
+	"fmt"
+	"reflect"
+	"strings"
+	"time"
+)
+
 /*
 
 create table hashf as
@@ -65,7 +75,7 @@ func (h Struct[T]) Put(pairs ...any) error {
 			}
 			key := fmt.Sprint("'", key, "'")
 
-			fmt.Println(field, val)
+			fmt.Println(field, val, key)
 
 		} else {
 			return fmt.Errorf("hash.Put: invalid key type, must be string")
@@ -141,26 +151,27 @@ type StatsShotsOnly struct {
 
 func main() {
 	// var p Player
-	h := db.Structf[Player]("random:%d", 1)
+	// h := db.Structf[Player]("random.%d", 1)
 	// h.Put(
 	// ...
-	err := h.Put(
-		"LastMatch", time.Now().UTC(),
-		"Stats.Stamina", 10,
-		"Stats.Nickness", 10,
-		"Stats.LineShots", 10,
-	)
-	fmt.Println(err)
+	// err := h.Put(
+	// 	"LastMatch", time.Now().UTC(),
+	// 	"Stats.Stamina", 10,
+	// 	"Stats.Nickness", 10,
+	// 	"Stats.LineShots", 10,
+	// )
+	// fmt.Println(err)
 	// h.Get(&p,
 	// 	"stats.stamina",
 	// 	"stats.nickness",
 	// )
-	var pso PlayerWithShotsOnly
-	s := db.Structf[PlayerWithShotsOnly]("random:%d", 1)
-	s.GetAll(&pso)
+	// var pso PlayerWithShotsOnly
+	// s := db.Structf[PlayerWithShotsOnly]("random:%d", 1)
+	// s.GetAll(&pso)
 	// s.GetOne(&pso)
 	// s.GetOne(&pso, "Stats.Stamina", "Stats.Nickness")
 	// s.GetOneWithContext(context.TODO(), &pso)
 	// s.GetMany(&pso[])
 	// s.GetManyWithContext(context.TODO(), &pso[])
 
+}
